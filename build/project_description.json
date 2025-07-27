@@ -1787,6 +1787,30 @@
             "managed_reqs": [],
             "managed_priv_reqs": [],
             "include_dirs": []
+        },
+        "BSEC2-Lib": {
+            "alias": "idf::BSEC2-Lib",
+            "target": "___idf_BSEC2-Lib",
+            "prefix": "idf",
+            "dir": "C:/w/hello_world/components/BSEC2-Lib",
+            "lib": "__idf_BSEC2-Lib",
+            "reqs": [],
+            "priv_reqs": [ "bme68x", "esp_log", "driver" ],
+            "managed_reqs": [],
+            "managed_priv_reqs": [],
+            "include_dirs": [ "." ]
+        },
+        "bme68x": {
+            "alias": "idf::bme68x",
+            "target": "___idf_bme68x",
+            "prefix": "idf",
+            "dir": "C:/w/hello_world/components/bme68x",
+            "lib": "__idf_bme68x",
+            "reqs": [],
+            "priv_reqs": [ "esp_log", "driver" ],
+            "managed_reqs": [],
+            "managed_priv_reqs": [],
+            "include_dirs": [ "src/bme68x" ]
         }
     },
     "debug_prefix_map_gdbinit": "",
