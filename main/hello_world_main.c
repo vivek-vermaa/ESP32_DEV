@@ -16,6 +16,14 @@
 void app_main(void)
 {
     printf("Hello world!\n");
+    for( int i=0; i< 10; i++)
+    {
+		printf ("serial test\n");
+		printf ("My name is Vivek Verma. I work in Cariad\n");
+		printf("Serial Test END \n");
+		vTaskDelay(1000 / portTICK_PERIOD_MS);
+
+	}
 
     /* Print chip information */
     esp_chip_info_t chip_info;
