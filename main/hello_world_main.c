@@ -50,7 +50,8 @@ ESP_EVENT_DEFINE_BASE(MY_EVENT_BASE);
 
 
 // SPI pins & host
-#define SPI_HOST       SPI2_HOST // Changed from HSPI_HOST to SPI2_HOST for newer ESP-IDF versions
+#undef SPI_HOST       
+#define SPI_HOST SPI2_HOST // Changed from HSPI_HOST to SPI2_HOST for newer ESP-IDF versions
 #define PIN_NUM_MISO   19
 #define PIN_NUM_MOSI   23 // Corrected typo here (PIN_MOSI -> PIN_NUM_MOSI)
 #define PIN_NUM_CLK    18
@@ -123,6 +124,7 @@ static esp_err_t init_spi_and_bme680(void)
         .max_transfer_sz = 0,
     };
     ESP_ERROR_CHECK(spi_bus_initialize(SPI_HOST, &buscfg, SPI_DMA_CH_AUTO));
+   
 
     spi_device_interface_config_t devcfg = {
         .clock_speed_hz = 5 * 1000 * 1000,  // 5 MHz
