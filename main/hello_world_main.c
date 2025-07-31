@@ -7,7 +7,7 @@
  *   Built on FreeRTOS for efficient task management and real-time performance.
  *
  * Author:
- *   Vivek Verma (tovivekverma@hotmail.com)
+ *  C) Vivek Verma (tovivekverma@hotmail.com) 2025- 2030
  *
  * License:
  *   This software is released under the MIT License.
@@ -16,7 +16,8 @@
  * Disclaimer:
  *   Provided as-is without any warranty. Use at your own risk.
  
-     Open Source Open Mind
+     Open Source Open Mind 
+	 
  */
 
 
