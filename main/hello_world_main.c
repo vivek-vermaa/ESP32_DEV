@@ -15,6 +15,8 @@
  *
  * Disclaimer:
  *   Provided as-is without any warranty. Use at your own risk.
+ 
+     Open Source Open Mind
  */
 
 
