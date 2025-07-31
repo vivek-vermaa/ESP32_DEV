@@ -1,3 +1,0 @@
-CompileFlags:
-  CompilationDatabase: C:\w\hello_world\build
-  Remove: [-m*, -f*]

@@ -1,3 +1,23 @@
+
+/*
+ * Main.c
+ *
+ * Description:
+ *   Main application for measuring Air Quality Index using the Bosch BME680 sensor.
+ *   Built on FreeRTOS for efficient task management and real-time performance.
+ *
+ * Author:
+ *   Vivek Verma (tovivekverma@hotmail.com)
+ *
+ * License:
+ *   This software is released under the MIT License.
+ *   You are free to use, modify, and distribute this software with proper attribution.
+ *
+ * Disclaimer:
+ *   Provided as-is without any warranty. Use at your own risk.
+ */
+
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h> // For NAN
