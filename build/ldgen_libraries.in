@@ -90,9 +90,9 @@ $<TARGET_FILE:__idf_esp_driver_i2c>
 $<TARGET_FILE:__idf_esp_driver_uart>
 $<TARGET_FILE:__idf_esp_driver_ledc>
 $<TARGET_FILE:__idf_esp_driver_twai>
-$<TARGET_FILE:idf::bme68x>
 $<TARGET_FILE:idf::BSEC2-Lib>
-$<TARGET_FILE:__idf_bme68x>
 $<TARGET_FILE:__idf_driver>
+$<TARGET_FILE:idf::esp_event>
 $<TARGET_FILE:idf::main>
 $<TARGET_FILE:__idf_BSEC2-Lib>
+$<TARGET_FILE:__idf_esp_event>

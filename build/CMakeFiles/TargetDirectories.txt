@@ -485,13 +485,6 @@ C:/w/hello_world/build/esp-idf/driver/CMakeFiles/list_install_components.dir
 C:/w/hello_world/build/esp-idf/driver/CMakeFiles/install.dir
 C:/w/hello_world/build/esp-idf/driver/CMakeFiles/install/local.dir
 C:/w/hello_world/build/esp-idf/driver/CMakeFiles/install/strip.dir
-C:/w/hello_world/build/esp-idf/bme68x/CMakeFiles/__idf_bme68x.dir
-C:/w/hello_world/build/esp-idf/bme68x/CMakeFiles/edit_cache.dir
-C:/w/hello_world/build/esp-idf/bme68x/CMakeFiles/rebuild_cache.dir
-C:/w/hello_world/build/esp-idf/bme68x/CMakeFiles/list_install_components.dir
-C:/w/hello_world/build/esp-idf/bme68x/CMakeFiles/install.dir
-C:/w/hello_world/build/esp-idf/bme68x/CMakeFiles/install/local.dir
-C:/w/hello_world/build/esp-idf/bme68x/CMakeFiles/install/strip.dir
 C:/w/hello_world/build/esp-idf/BSEC2-Lib/CMakeFiles/__idf_BSEC2-Lib.dir
 C:/w/hello_world/build/esp-idf/BSEC2-Lib/CMakeFiles/edit_cache.dir
 C:/w/hello_world/build/esp-idf/BSEC2-Lib/CMakeFiles/rebuild_cache.dir
@@ -499,6 +492,13 @@ C:/w/hello_world/build/esp-idf/BSEC2-Lib/CMakeFiles/list_install_components.dir
 C:/w/hello_world/build/esp-idf/BSEC2-Lib/CMakeFiles/install.dir
 C:/w/hello_world/build/esp-idf/BSEC2-Lib/CMakeFiles/install/local.dir
 C:/w/hello_world/build/esp-idf/BSEC2-Lib/CMakeFiles/install/strip.dir
+C:/w/hello_world/build/esp-idf/esp_event/CMakeFiles/__idf_esp_event.dir
+C:/w/hello_world/build/esp-idf/esp_event/CMakeFiles/edit_cache.dir
+C:/w/hello_world/build/esp-idf/esp_event/CMakeFiles/rebuild_cache.dir
+C:/w/hello_world/build/esp-idf/esp_event/CMakeFiles/list_install_components.dir
+C:/w/hello_world/build/esp-idf/esp_event/CMakeFiles/install.dir
+C:/w/hello_world/build/esp-idf/esp_event/CMakeFiles/install/local.dir
+C:/w/hello_world/build/esp-idf/esp_event/CMakeFiles/install/strip.dir
 C:/w/hello_world/build/esp-idf/main/CMakeFiles/__idf_main.dir
 C:/w/hello_world/build/esp-idf/main/CMakeFiles/edit_cache.dir
 C:/w/hello_world/build/esp-idf/main/CMakeFiles/rebuild_cache.dir

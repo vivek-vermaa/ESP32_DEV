@@ -21,12 +21,12 @@
     "monitor_toolprefix": "xtensa-esp32-elf-",
     "c_compiler":         "C:/Espressif/tools/xtensa-esp-elf/esp-14.2.0_20241119/xtensa-esp-elf/bin/xtensa-esp32-elf-gcc.exe",
     "config_environment" : {
-        "COMPONENT_KCONFIGS" : "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/driver/Kconfig;C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/efuse/Kconfig;C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_common/Kconfig;C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_driver_ana_cmpr/Kconfig;C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_driver_bitscrambler/Kconfig;C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_driver_dac/Kconfig;C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_driver_gpio/Kconfig;C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_driver_gptimer/Kconfig;C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_driver_i2c/Kconfig;C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_driver_i2s/Kconfig;C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_driver_ledc/Kconfig;C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_driver_mcpwm/Kconfig;C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_driver_parlio/Kconfig;C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_driver_pcnt/Kconfig;C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_driver_rmt/Kconfig;C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_driver_sdm/Kconfig;C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_driver_spi/Kconfig;C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_driver_tsens/Kconfig;C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_driver_twai/Kconfig;C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_driver_uart/Kconfig;C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_driver_usb_serial_jtag/Kconfig;C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_hw_support/Kconfig;C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_mm/Kconfig;C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_partition/Kconfig;C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_pm/Kconfig;C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_ringbuf/Kconfig;C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_rom/Kconfig;C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_security/Kconfig;C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_system/Kconfig;C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_timer/Kconfig;C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/freertos/Kconfig;C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/hal/Kconfig;C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/heap/Kconfig;C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/log/Kconfig;C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/mbedtls/Kconfig;C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/newlib/Kconfig;C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/pthread/Kconfig;C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/soc/Kconfig;C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/spi_flash/Kconfig",
+        "COMPONENT_KCONFIGS" : "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/driver/Kconfig;C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/efuse/Kconfig;C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_common/Kconfig;C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_driver_ana_cmpr/Kconfig;C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_driver_bitscrambler/Kconfig;C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_driver_dac/Kconfig;C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_driver_gpio/Kconfig;C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_driver_gptimer/Kconfig;C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_driver_i2c/Kconfig;C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_driver_i2s/Kconfig;C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_driver_ledc/Kconfig;C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_driver_mcpwm/Kconfig;C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_driver_parlio/Kconfig;C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_driver_pcnt/Kconfig;C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_driver_rmt/Kconfig;C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_driver_sdm/Kconfig;C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_driver_spi/Kconfig;C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_driver_tsens/Kconfig;C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_driver_twai/Kconfig;C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_driver_uart/Kconfig;C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_driver_usb_serial_jtag/Kconfig;C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_event/Kconfig;C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_hw_support/Kconfig;C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_mm/Kconfig;C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_partition/Kconfig;C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_pm/Kconfig;C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_ringbuf/Kconfig;C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_rom/Kconfig;C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_security/Kconfig;C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_system/Kconfig;C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_timer/Kconfig;C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/freertos/Kconfig;C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/hal/Kconfig;C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/heap/Kconfig;C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/log/Kconfig;C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/mbedtls/Kconfig;C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/newlib/Kconfig;C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/pthread/Kconfig;C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/soc/Kconfig;C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/spi_flash/Kconfig",
         "COMPONENT_KCONFIGS_PROJBUILD" : "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/bootloader/Kconfig.projbuild;C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_app_format/Kconfig.projbuild;C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_rom/Kconfig.projbuild;C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esptool_py/Kconfig.projbuild;C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/partition_table/Kconfig.projbuild"
     },
     "common_component_reqs": [ "cxx", "newlib", "freertos", "esp_hw_support", "heap", "log", "soc", "hal", "esp_rom", "esp_common", "esp_system", "xtensa" ],
-    "build_components" : [ "BSEC2-Lib", "app_update", "bme68x", "bootloader", "bootloader_support", "cxx", "driver", "efuse", "esp_app_format", "esp_bootloader_format", "esp_common", "esp_driver_ana_cmpr", "esp_driver_bitscrambler", "esp_driver_dac", "esp_driver_gpio", "esp_driver_gptimer", "esp_driver_i2c", "esp_driver_i2s", "esp_driver_ledc", "esp_driver_mcpwm", "esp_driver_parlio", "esp_driver_pcnt", "esp_driver_rmt", "esp_driver_sdio", "esp_driver_sdm", "esp_driver_sdmmc", "esp_driver_sdspi", "esp_driver_spi", "esp_driver_tsens", "esp_driver_twai", "esp_driver_uart", "esp_driver_usb_serial_jtag", "esp_hw_support", "esp_mm", "esp_partition", "esp_pm", "esp_ringbuf", "esp_rom", "esp_security", "esp_system", "esp_timer", "esptool_py", "freertos", "hal", "heap", "log", "main", "mbedtls", "newlib", "partition_table", "pthread", "sdmmc", "soc", "spi_flash", "xtensa", "" ],
-    "build_component_paths" : [ "C:/w/hello_world/components/BSEC2-Lib", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/app_update", "C:/w/hello_world/components/bme68x", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/bootloader", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/bootloader_support", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/cxx", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/driver", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/efuse", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_app_format", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_bootloader_format", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_common", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_driver_ana_cmpr", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_driver_bitscrambler", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_driver_dac", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_driver_gpio", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_driver_gptimer", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_driver_i2c", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_driver_i2s", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_driver_ledc", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_driver_mcpwm", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_driver_parlio", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_driver_pcnt", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_driver_rmt", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_driver_sdio", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_driver_sdm", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_driver_sdmmc", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_driver_sdspi", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_driver_spi", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_driver_tsens", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_driver_twai", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_driver_uart", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_driver_usb_serial_jtag", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_hw_support", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_mm", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_partition", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_pm", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_ringbuf", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_rom", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_security", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_system", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_timer", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esptool_py", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/freertos", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/hal", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/heap", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/log", "C:/w/hello_world/main", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/mbedtls", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/newlib", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/partition_table", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/pthread", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/sdmmc", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/soc", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/spi_flash", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/xtensa", "" ],
+    "build_components" : [ "BSEC2-Lib", "app_update", "bootloader", "bootloader_support", "cxx", "driver", "efuse", "esp_app_format", "esp_bootloader_format", "esp_common", "esp_driver_ana_cmpr", "esp_driver_bitscrambler", "esp_driver_dac", "esp_driver_gpio", "esp_driver_gptimer", "esp_driver_i2c", "esp_driver_i2s", "esp_driver_ledc", "esp_driver_mcpwm", "esp_driver_parlio", "esp_driver_pcnt", "esp_driver_rmt", "esp_driver_sdio", "esp_driver_sdm", "esp_driver_sdmmc", "esp_driver_sdspi", "esp_driver_spi", "esp_driver_tsens", "esp_driver_twai", "esp_driver_uart", "esp_driver_usb_serial_jtag", "esp_event", "esp_hw_support", "esp_mm", "esp_partition", "esp_pm", "esp_ringbuf", "esp_rom", "esp_security", "esp_system", "esp_timer", "esptool_py", "freertos", "hal", "heap", "log", "main", "mbedtls", "newlib", "partition_table", "pthread", "sdmmc", "soc", "spi_flash", "xtensa", "" ],
+    "build_component_paths" : [ "C:/w/hello_world/components/BSEC2-Lib", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/app_update", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/bootloader", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/bootloader_support", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/cxx", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/driver", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/efuse", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_app_format", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_bootloader_format", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_common", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_driver_ana_cmpr", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_driver_bitscrambler", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_driver_dac", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_driver_gpio", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_driver_gptimer", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_driver_i2c", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_driver_i2s", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_driver_ledc", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_driver_mcpwm", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_driver_parlio", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_driver_pcnt", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_driver_rmt", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_driver_sdio", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_driver_sdm", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_driver_sdmmc", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_driver_sdspi", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_driver_spi", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_driver_tsens", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_driver_twai", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_driver_uart", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_driver_usb_serial_jtag", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_event", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_hw_support", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_mm", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_partition", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_pm", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_ringbuf", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_rom", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_security", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_system", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_timer", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esptool_py", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/freertos", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/hal", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/heap", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/log", "C:/w/hello_world/main", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/mbedtls", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/newlib", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/partition_table", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/pthread", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/sdmmc", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/soc", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/spi_flash", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/xtensa", "" ],
     "build_component_info" : {
         "BSEC2-Lib": {
             "alias": "idf::BSEC2-Lib",
@@ -36,11 +36,11 @@
             "type": "LIBRARY",
             "lib": "__idf_BSEC2-Lib",
             "reqs": [],
-            "priv_reqs": [ "bme68x", "log", "driver" ],
+            "priv_reqs": [ "log", "driver", "esp_timer" ],
             "managed_reqs": [],
             "managed_priv_reqs": [],
             "file": "C:/w/hello_world/build/esp-idf/BSEC2-Lib/libBSEC2-Lib.a",
-            "sources": [ "C:/w/hello_world/components/BSEC2-Lib/dummy.c" ],
+            "sources": [ "C:/w/hello_world/components/BSEC2-Lib/dummy.c", "C:/w/hello_world/components/BSEC2-Lib/bsec_integration.c", "C:/w/hello_world/components/BSEC2-Lib/bme680.c" ],
             "include_dirs": [ "." ]
         },
         "app_update": {
@@ -57,21 +57,6 @@
             "file": "C:/w/hello_world/build/esp-idf/app_update/libapp_update.a",
             "sources": [ "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/app_update/esp_ota_ops.c", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/app_update/esp_ota_app_desc.c" ],
             "include_dirs": [ "include" ]
-        },
-        "bme68x": {
-            "alias": "idf::bme68x",
-            "target": "___idf_bme68x",
-            "prefix": "idf",
-            "dir": "C:/w/hello_world/components/bme68x",
-            "type": "LIBRARY",
-            "lib": "__idf_bme68x",
-            "reqs": [],
-            "priv_reqs": [],
-            "managed_reqs": [],
-            "managed_priv_reqs": [],
-            "file": "C:/w/hello_world/build/esp-idf/bme68x/libbme68x.a",
-            "sources": [ "C:/w/hello_world/components/bme68x/src/bme68x.c" ],
-            "include_dirs": [ "src" ]
         },
         "bootloader": {
             "alias": "idf::bootloader",
@@ -508,6 +493,21 @@
             "sources": [],
             "include_dirs": [ "include" ]
         },
+        "esp_event": {
+            "alias": "idf::esp_event",
+            "target": "___idf_esp_event",
+            "prefix": "idf",
+            "dir": "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_event",
+            "type": "LIBRARY",
+            "lib": "__idf_esp_event",
+            "reqs": [ "log", "esp_common", "freertos" ],
+            "priv_reqs": [ "esp_timer" ],
+            "managed_reqs": [],
+            "managed_priv_reqs": [],
+            "file": "C:/w/hello_world/build/esp-idf/esp_event/libesp_event.a",
+            "sources": [ "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_event/default_event_loop.c", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_event/esp_event.c", "C:/Espressif/frameworks/esp-idf-v5.5-rc1/components/esp_event/esp_event_private.c" ],
+            "include_dirs": [ "include" ]
+        },
         "esp_hw_support": {
             "alias": "idf::esp_hw_support",
             "target": "___idf_esp_hw_support",
@@ -726,7 +726,7 @@
             "type": "LIBRARY",
             "lib": "__idf_main",
             "reqs": [],
-            "priv_reqs": [ "freertos", "log", "driver", "BSEC2-Lib", "spi_flash" ],
+            "priv_reqs": [ "freertos", "log", "driver", "BSEC2-Lib", "spi_flash", "esp_event", "esp_timer" ],
             "managed_reqs": [],
             "managed_priv_reqs": [],
             "file": "C:/w/hello_world/build/esp-idf/main/libmain.a",
@@ -2158,7 +2158,7 @@
             "dir": "C:/w/hello_world/main",
             "lib": "__idf_main",
             "reqs": [],
-            "priv_reqs": [ "freertos", "log", "driver", "BSEC2-Lib", "spi_flash" ],
+            "priv_reqs": [ "freertos", "log", "driver", "BSEC2-Lib", "spi_flash", "esp_event", "esp_timer" ],
             "managed_reqs": [],
             "managed_priv_reqs": [],
             "include_dirs": [ "." ]
@@ -2170,22 +2170,10 @@
             "dir": "C:/w/hello_world/components/BSEC2-Lib",
             "lib": "__idf_BSEC2-Lib",
             "reqs": [],
-            "priv_reqs": [ "bme68x", "log", "driver" ],
+            "priv_reqs": [ "log", "driver", "esp_timer" ],
             "managed_reqs": [],
             "managed_priv_reqs": [],
             "include_dirs": [ "." ]
-        },
-        "bme68x": {
-            "alias": "idf::bme68x",
-            "target": "___idf_bme68x",
-            "prefix": "idf",
-            "dir": "C:/w/hello_world/components/bme68x",
-            "lib": "__idf_bme68x",
-            "reqs": [],
-            "priv_reqs": [],
-            "managed_reqs": [],
-            "managed_priv_reqs": [],
-            "include_dirs": [ "src" ]
         }
     },
     "debug_prefix_map_gdbinit": "",

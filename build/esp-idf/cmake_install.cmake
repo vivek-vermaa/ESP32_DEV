@@ -299,12 +299,12 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/w/hello_world/build/esp-idf/bme68x/cmake_install.cmake")
+  include("C:/w/hello_world/build/esp-idf/BSEC2-Lib/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/w/hello_world/build/esp-idf/BSEC2-Lib/cmake_install.cmake")
+  include("C:/w/hello_world/build/esp-idf/esp_event/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)

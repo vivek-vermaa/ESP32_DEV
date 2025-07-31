@@ -17,4 +17,7 @@ idf_component_register(SRCS "hello_world_main.c"
                             "driver"
                             "BSEC2-Lib"
                             "spi_flash"
+                            "esp_event"
+                            "esp_timer"
+                            
 )

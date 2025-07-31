@@ -90,9 +90,9 @@ C:/w/hello_world/build/esp-idf/esp_driver_i2c/libesp_driver_i2c.a
 C:/w/hello_world/build/esp-idf/esp_driver_uart/libesp_driver_uart.a
 C:/w/hello_world/build/esp-idf/esp_driver_ledc/libesp_driver_ledc.a
 C:/w/hello_world/build/esp-idf/esp_driver_twai/libesp_driver_twai.a
-C:/w/hello_world/build/esp-idf/bme68x/libbme68x.a
 C:/w/hello_world/build/esp-idf/BSEC2-Lib/libBSEC2-Lib.a
-C:/w/hello_world/build/esp-idf/bme68x/libbme68x.a
 C:/w/hello_world/build/esp-idf/driver/libdriver.a
+C:/w/hello_world/build/esp-idf/esp_event/libesp_event.a
 C:/w/hello_world/build/esp-idf/main/libmain.a
 C:/w/hello_world/build/esp-idf/BSEC2-Lib/libBSEC2-Lib.a
+C:/w/hello_world/build/esp-idf/esp_event/libesp_event.a
