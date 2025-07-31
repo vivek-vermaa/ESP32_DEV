@@ -209,17 +209,17 @@ static void measure_event_handler(
 
     // Add sensor data to inputs array
     inputs[n_inputs].sensor_id = BSEC_INPUT_TEMPERATURE;
-    //inputs[n_inputs].signal = raw.temperature;
+    inputs[n_inputs].signal = raw.temperature;
     inputs[n_inputs].time_stamp = timestamp_us;
     n_inputs++;
 
     inputs[n_inputs].sensor_id = BSEC_INPUT_HUMIDITY;
-  //  inputs[n_inputs].signal = raw.humidity;
+    inputs[n_inputs].signal = raw.humidity;
     inputs[n_inputs].time_stamp = timestamp_us;
     n_inputs++;
 
     inputs[n_inputs].sensor_id = BSEC_INPUT_GASRESISTOR;
-   // inputs[n_inputs].signal = (float)raw.gas_resistance; // Cast to float
+    inputs[n_inputs].signal = (float)raw.gas_resistance; // Cast to float
     inputs[n_inputs].time_stamp = timestamp_us;
     n_inputs++;
 
@@ -240,10 +240,10 @@ static void measure_event_handler(
         ESP_LOGE("BME680", "Failed to allocate memory for event data");
         return;
     }
-   // evt->temperature   = raw.temperature;
-   // evt->humidity      = raw.humidity;
-   // evt->pressure      = raw.pressure;
-   // evt->gas_resistance= raw.gas_resistance;
+    evt->temperature   = raw.temperature;
+    evt->humidity      = raw.humidity;
+    evt->pressure      = raw.pressure;
+    evt->gas_resistance= raw.gas_resistance;
     evt->iaq           = NAN;
     evt->sensor_stablization        = NAN;
 
