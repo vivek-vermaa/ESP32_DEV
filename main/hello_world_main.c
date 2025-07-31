@@ -7,7 +7,7 @@
  *   Built on FreeRTOS for efficient task management and real-time performance.
  *
  * Author:
- *  C) Vivek Verma (tovivekverma@hotmail.com) 2025- 2030
+ *   Vivek Verma (tovivekverma@hotmail.com)
  *
  * License:
  *   This software is released under the MIT License.
@@ -15,9 +15,6 @@
  *
  * Disclaimer:
  *   Provided as-is without any warranty. Use at your own risk.
- 
-     Open Source Open Mind 
-	 
  */
 
 
@@ -197,13 +194,13 @@ static void measure_event_handler(
     bme680_set_sensor_mode(&sensor);
 
     // 2) Wait required duration
-    uint32_t duration_ms =1000;
-  //  bme680_get_profile_dur(&duration_ms, &sensor);
+    uint16_t duration_ms =1000;
+  	bme680_get_profile_dur(&duration_ms, &sensor);
     vTaskDelay(pdMS_TO_TICKS(duration_ms));
 
     // 3) Read raw data
     struct bme680_field_data raw;
-    //bme680_get_sensor_data(&raw, &sensor);
+    bme680_get_sensor_data(&raw, &sensor);
 
     // 4) Prepare inputs for BSEC
     bsec_input_t inputs[BSEC_MAX_INPUTS];
