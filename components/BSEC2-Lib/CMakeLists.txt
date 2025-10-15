@@ -4,7 +4,7 @@ idf_component_register(
     SRCS
         "dummy.c"  # Ensure dummy.c exists directly in components/BSEC2-Lib/
         "bsec_integration.c"
-         "bme680.c"
+         "bme68x.c"
     INCLUDE_DIRS
         "."        # Include the BSEC2-Lib/ folder for bsec2.h
     PRIV_REQUIRES
@@ -15,5 +15,5 @@ idf_component_register(
 
 target_link_libraries(${COMPONENT_TARGET}
     PRIVATE
-        ${CMAKE_CURRENT_LIST_DIR}/src/esp32/libalgobsec.a
+        ${CMAKE_CURRENT_LIST_DIR}/src/esp32s3/libalgobsec.a
 ) 

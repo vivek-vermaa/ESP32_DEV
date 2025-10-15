@@ -9,6 +9,7 @@
 # C:/w/hello_world/main/CMakeLists.txt
 
 idf_component_register(SRCS "hello_world_main.c"
+                             "bsec_iaq.c"
                        INCLUDE_DIRS "."
                        PRIV_REQUIRES
                             "freertos"

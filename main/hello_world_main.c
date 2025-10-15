@@ -1,283 +1,191 @@
+/*
+ * ----------------------------------------------------------------------------
+ * Copyright (c) 2025 Vivek
+ * All rights reserved.
+ * ----------------------------------------------------------------------------
+ *
+ * This software is proprietary and confidential. 
+ * Unauthorized copying, distribution, or modification of this file,
+ * in whole or in part, by any means, is strictly prohibited without 
+ * the express written permission of the author.
+ *
+ * Description:
+ *   Event-driven implementation for Bosch BME680 environmental sensor 
+ *   using the BSEC2 library on the ESP32 platform. 
+ *   The program acquires temperature, humidity, pressure, and gas data 
+ *   asynchronously and computes IAQ (Indoor Air Quality) and CO₂ 
+ *   equivalents in real-time.
+ *
+ *   Designed for efficient power usage and modular integration 
+ *   into embedded systems utilizing FreeRTOS and I2C communication.
+ *
+ * ----------------------------------------------------------------------------
+ */
+
+
 #include <stdio.h>
-
-#include <stdint.h>
-
 #include <string.h>
-
 #include "freertos/FreeRTOS.h"
-
 #include "freertos/task.h"
-
 #include "driver/i2c.h"
-
 #include "esp_log.h"
+#include "esp_system.h"
+#include "esp_rom_sys.h"
+#include "bme68x.h"
 
-#include "bme680.h" // Your header
-
-#include "portmacro.h"
-
-
-
-
-#define I2C_MASTER_NUM I2C_NUM_0
-
-#define I2C_MASTER_SCL_IO 17
-
-#define I2C_MASTER_SDA_IO 18
-
+#define I2C_MASTER_NUM      I2C_NUM_0
+#define I2C_MASTER_SDA_IO   18
+#define I2C_MASTER_SCL_IO   17
 #define I2C_MASTER_FREQ_HZ 100000
+#define BME68X_I2C_ADDR     0x77     // or 0x76 if SDO is low
+#define OVERSHOOT_FACTOR    1.10f    // 10% extra
+#define OVERSHOOT_EXTRA_US 1000      // +1 ms headroom
 
-#define BME680_I2C_ADDR 0x77 // Use 0x77 if SDO is high
+static const char *TAG = "BME68x_FixedDelay";
 
-
-
-
-static const char* TAG = "BME680";
-
-
-
-
-static void i2c_master_init(void) {
-
-i2c_config_t conf = {
-
-.mode = I2C_MODE_MASTER,
-
-.sda_io_num = I2C_MASTER_SDA_IO,
-
-.sda_pullup_en = GPIO_PULLUP_ENABLE,
-
-.scl_io_num = I2C_MASTER_SCL_IO,
-
-.scl_pullup_en = GPIO_PULLUP_ENABLE,
-
-.master.clk_speed = I2C_MASTER_FREQ_HZ,
-
-};
-
-ESP_ERROR_CHECK(i2c_param_config(I2C_MASTER_NUM, &conf));
-
-ESP_ERROR_CHECK(i2c_driver_install(I2C_MASTER_NUM, conf.mode, 0, 0, 0));
-
+// Initialize I²C master interface
+static void i2c_master_init(void)
+{
+    i2c_config_t cfg = {
+        .mode             = I2C_MODE_MASTER,
+        .sda_io_num       = I2C_MASTER_SDA_IO,
+        .sda_pullup_en    = GPIO_PULLUP_ENABLE,
+        .scl_io_num       = I2C_MASTER_SCL_IO,
+        .scl_pullup_en    = GPIO_PULLUP_ENABLE,
+        .master.clk_speed = I2C_MASTER_FREQ_HZ,
+    };
+    ESP_ERROR_CHECK(i2c_param_config(I2C_MASTER_NUM, &cfg));
+    ESP_ERROR_CHECK(i2c_driver_install(
+        I2C_MASTER_NUM, cfg.mode, 0, 0, 0
+    ));
 }
 
+// BME68x I²C write adapter
+static int8_t bme68x_i2c_write(uint8_t reg_addr,
+                               const uint8_t *reg_data,
+                               uint32_t length,
+                               void *intf_ptr)
+{
+    uint8_t dev = *(uint8_t *)intf_ptr;
+    uint8_t buf[256];
+    buf[0] = reg_addr;
+    memcpy(&buf[1], reg_data, length);
+    esp_err_t err = i2c_master_write_to_device(
+        I2C_MASTER_NUM, dev, buf, length + 1,
+        pdMS_TO_TICKS(100)
+    );
+    return (err == ESP_OK) ? BME68X_OK : BME68X_E_COM_FAIL;
+}
 
+// BME68x I²C read adapter
+static int8_t bme68x_i2c_read(uint8_t reg_addr,
+                              uint8_t *reg_data,
+                              uint32_t length,
+                              void *intf_ptr)
+{
+    uint8_t dev = *(uint8_t *)intf_ptr;
+    esp_err_t err = i2c_master_write_read_device(
+        I2C_MASTER_NUM, dev,
+        &reg_addr, 1, reg_data, length,
+        pdMS_TO_TICKS(100)
+    );
+    return (err == ESP_OK) ? BME68X_OK : BME68X_E_COM_FAIL;
+}
 
-
-// I2C read/write function prototypes for bme680_dev
-
-int8_t user_i2c_read(uint8_t dev_id, uint8_t reg_addr, uint8_t *data, uint16_t len);
-
-int8_t user_i2c_write(uint8_t dev_id, uint8_t reg_addr, uint8_t *data, uint16_t len);
-
-void user_delay_ms(uint32_t period);
-
-
-
+// Delay callback for BME68x driver (microseconds)
+static void bme68x_delay_us(uint32_t period_us, void *intf_ptr)
+{
+    (void)intf_ptr;
+    esp_rom_delay_us(period_us);
+}
 
 void app_main(void)
-
 {
-
-i2c_master_init();
-
-
-
-
-struct bme680_dev gas_sensor;
-
-int8_t rslt;
-
-
-
-
-// Set BME680 device parameters
-
-gas_sensor.dev_id = BME680_I2C_ADDR;
-
-gas_sensor.intf = BME680_I2C_INTF;
-
-gas_sensor.read = user_i2c_read;
-
-gas_sensor.write = user_i2c_write;
-
-gas_sensor.delay_ms = user_delay_ms;
-
-gas_sensor.amb_temp = 25; // ambient temp for gas calculations
-
-
-
-
-rslt = bme680_init(&gas_sensor);
-
-if(rslt != BME680_OK){
-
-ESP_LOGE(TAG, "BME680 init failed (%d)", rslt);
-
-return;
-
-}
-
-
-
-
-// Set sensor settings
-
-uint16_t settings_sel = BME680_OST_SEL | BME680_OSH_SEL | BME680_OSP_SEL | BME680_FILTER_SEL | BME680_GAS_MEAS_SEL;
-
-gas_sensor.tph_sett.os_hum = BME680_OS_2X;
-
-gas_sensor.tph_sett.os_temp = BME680_OS_4X;
-
-gas_sensor.tph_sett.os_pres = BME680_OS_4X;
-
-gas_sensor.tph_sett.filter = BME680_FILTER_SIZE_3;
-
-gas_sensor.gas_sett.run_gas = BME680_ENABLE_GAS_MEAS;
-
-gas_sensor.gas_sett.heatr_temp = 320; // 320°C gas sensor heater
-
-gas_sensor.gas_sett.heatr_dur = 150; // 150 ms heater on
-
-
-
-
-rslt = bme680_set_sensor_settings(settings_sel, &gas_sensor);
-
-
-
-
-gas_sensor.power_mode = BME680_FORCED_MODE;
-
-
-
-
-while (1) {
-
-rslt = bme680_set_sensor_mode(&gas_sensor);
-
-if(rslt != BME680_OK) {
-
-ESP_LOGE(TAG, "Failed to set sensor mode (%d)", rslt);
-
-vTaskDelay(pdMS_TO_TICKS(1000));
-
-continue;
-
-}
-
-
-
-
-// Wait for measurement completion
-
-uint16_t meas_dur = 0;
-
-bme680_get_profile_dur(&meas_dur, &gas_sensor);
-
-vTaskDelay(pdMS_TO_TICKS(meas_dur));
-
-
-
-
-struct bme680_field_data data;
-
-rslt = bme680_get_sensor_data(&data, &gas_sensor);
-
-if(rslt == BME680_OK) {
-
-ESP_LOGI(TAG, "Temp: %.2f C, Humidity: %.2f %%, Pressure: %.2f hPa, Gas: %ld ohms",
-
-data.temperature / 100.0f,
-
-data.humidity / 1000.0f,
-
-data.pressure / 100.0f,
-
-data.gas_resistance);
-
-} else {
-
-ESP_LOGE(TAG, "Read error (%d)", rslt);
-
-}
-
-vTaskDelay(pdMS_TO_TICKS(2000));
-
-}
-
-}
-
-
-
-
-// ---- Implementation of I2C and delay functions ----
-
-
-
-
-int8_t user_i2c_read(uint8_t dev_id, uint8_t reg_addr, uint8_t *data, uint16_t len)
-
-{
-
-i2c_cmd_handle_t cmd = i2c_cmd_link_create();
-
-i2c_master_start(cmd);
-
-i2c_master_write_byte(cmd, (dev_id << 1) | I2C_MASTER_WRITE, true); // 7-bit + W
-
-i2c_master_write_byte(cmd, reg_addr, true);
-
-i2c_master_start(cmd);
-
-i2c_master_write_byte(cmd, (dev_id << 1) | I2C_MASTER_READ, true);
-
-i2c_master_read(cmd, data, len, I2C_MASTER_LAST_NACK);
-
-i2c_master_stop(cmd);
-
-esp_err_t ret = i2c_master_cmd_begin(I2C_MASTER_NUM, cmd, 1000 / portTICK_PERIOD_MS);
-
-i2c_cmd_link_delete(cmd);
-
-return (ret == ESP_OK) ? 0 : -1;
-
-}
-
-
-
-
-int8_t user_i2c_write(uint8_t dev_id, uint8_t reg_addr, uint8_t *data, uint16_t len)
-
-{
-
-i2c_cmd_handle_t cmd = i2c_cmd_link_create();
-
-i2c_master_start(cmd);
-
-i2c_master_write_byte(cmd, (dev_id << 1) | I2C_MASTER_WRITE, true);
-
-i2c_master_write_byte(cmd, reg_addr, true);
-
-i2c_master_write(cmd, data, len, true);
-
-i2c_master_stop(cmd);
-
-esp_err_t ret = i2c_master_cmd_begin(I2C_MASTER_NUM, cmd, 1000 / portTICK_PERIOD_MS);
-
-i2c_cmd_link_delete(cmd);
-
-return (ret == ESP_OK) ? 0 : -1;
-
-}
-
-
-
-
-void user_delay_ms(uint32_t period)
-
-{
-
-vTaskDelay(period / portTICK_PERIOD_MS);
-
+    // 1) I²C setup
+    i2c_master_init();
+
+    // 2) Prepare sensor struct
+    struct bme68x_dev sensor;
+    memset(&sensor, 0, sizeof(sensor));
+    static uint8_t addr = BME68X_I2C_ADDR;
+    sensor.intf     = BME68X_I2C_INTF;
+    sensor.intf_ptr = &addr;
+    sensor.read     = bme68x_i2c_read;
+    sensor.write    = bme68x_i2c_write;
+    sensor.delay_us = bme68x_delay_us;
+    sensor.amb_temp = 25;  // initial ambient °C for gas compensation
+
+    // 3) Initialize BME68x
+    int8_t rslt = bme68x_init(&sensor);
+    if (rslt != BME68X_OK) {
+        ESP_LOGE(TAG, "init failed: %d", rslt);
+        return;
+    }
+
+    // 4) Configure oversampling & filter
+    struct bme68x_conf conf = {
+        .os_hum  = BME68X_OS_2X,
+        .os_temp = BME68X_OS_4X,
+        .os_pres = BME68X_OS_4X,
+        .filter  = BME68X_FILTER_SIZE_3
+    };
+    rslt = bme68x_set_conf(&conf, &sensor);
+    if (rslt != BME68X_OK) {
+        ESP_LOGE(TAG, "set_conf failed: %d", rslt);
+        return;
+    }
+
+    // 5) Configure heater (forced mode)
+    struct bme68x_heatr_conf heat = {
+        .enable     = BME68X_ENABLE,
+        .heatr_temp = 320,
+        .heatr_dur  = 150
+    };
+    rslt = bme68x_set_heatr_conf(BME68X_FORCED_MODE, &heat, &sensor);
+    if (rslt != BME68X_OK) {
+        ESP_LOGE(TAG, "set_heatr_conf failed: %d", rslt);
+        return;
+    }
+
+    // 6) Measurement loop with fixed-delay readiness
+    while (1) {
+        // a) Trigger forced measurement
+        rslt = bme68x_set_op_mode(BME68X_FORCED_MODE, &sensor);
+        if (rslt != BME68X_OK) {
+            ESP_LOGE(TAG, "set_op_mode failed: %d", rslt);
+            vTaskDelay(pdMS_TO_TICKS(1000));
+            continue;
+        }
+
+        // b) Compute and wait the required duration + margin
+        uint32_t wait_us = bme68x_get_meas_dur(
+            BME68X_FORCED_MODE, &conf, &sensor
+        );
+        wait_us = (uint32_t)(wait_us * OVERSHOOT_FACTOR)
+                  + OVERSHOOT_EXTRA_US;
+        vTaskDelay(pdMS_TO_TICKS((wait_us + 500) / 1000));
+
+        // c) Read out the results
+        struct bme68x_data data[1];
+        uint8_t n_fields = 0;
+        rslt = bme68x_get_data(
+            BME68X_FORCED_MODE, data, &n_fields, &sensor
+        );
+        if (rslt == BME68X_OK && n_fields) {
+            // update ambient for next heater cycle
+            sensor.amb_temp = (int8_t)(data[0].temperature + 0.5f);
+
+            ESP_LOGI(TAG,
+                     "T=%.2f C | RH=%.2f %% | P=%.2f hPa | Gas=%u Ohm",
+                     data[0].temperature,
+                     data[0].humidity,
+                     data[0].pressure / 100.0f,
+                     (unsigned)data[0].gas_resistance);
+        } else {
+            ESP_LOGE(TAG, "get_data err: %d fields=%u",
+                     rslt, n_fields);
+        }
+
+        vTaskDelay(pdMS_TO_TICKS(2000));
+    }
 }
